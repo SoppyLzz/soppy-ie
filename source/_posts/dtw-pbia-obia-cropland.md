@@ -11,19 +11,19 @@ categories:
 
 ## 论文信息
 
-| 属性       | 详细信息                                                     |
-| ---------- | ------------------------------------------------------------ |
-| **标题**   | 🔬 *[Sentinel-2 Cropland Mapping using Pixel-based and Object-based Time-Weighted Dynamic Time Warping Analysis](https://www.sciencedirect.com/science/article/pii/S0034425717304686)*<br>🔬 基于像素和对象的时间加权动态时间规整分析进行Sentinel-2农田制图 |
-| **期刊**   | 📚︎ *Remote Sensing of Environment* \| 🌍 地球科学1区 \[TOP\]   |
-| **日期**   | ⏲️ 2018-01                                                    |
-| **作者**   | 👩‍🔬 [Mariana Belgiu](https://scholar.google.com.hk/citations?user=GBi_DcgAAAAJ&hl=zh-CN&oi=sra) |
-| **关键词** | `remote sensing`、 `agriculture`、`satellite image time series`、`image segmentation`、`OBIA`、`land use/land cover`、`random forest` |
+| 属性                                               | 详细信息                                                     |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| **标题**                                           | 🔬 *[Sentinel-2 Cropland Mapping using Pixel-based and Object-based Time-Weighted Dynamic Time Warping Analysis](https://www.sciencedirect.com/science/article/pii/S0034425717304686)*<br>🔬 基于像素和对象的时间加权动态时间规整分析进行Sentinel-2农田制图 |
+| **期刊**                                           | 📚︎ *Remote Sensing of Environment* \| 🌍 地球科学1区 \[TOP\]   |
+| **日期**                                           | ⏲️ 2018-01                                                    |
+| **作者**                                           | 👩‍🔬 [Mariana Belgiu](https://scholar.google.com.hk/citations?user=GBi_DcgAAAAJ&hl=zh-CN&oi=sra) |
+| <span style='white-space:nowrap'>**关键词**</span> | `remote sensing`、 `agriculture`、`satellite image time series`、`image segmentation`、`OBIA`、`land use/land cover`、`random forest` |
 
 > 一句话解读：该论文分别采用对象基（OB）、像素基（PB）的分析方式，使用TWDTW、RF进行对耕地的分类制图并对结果进行分析；
 
 ## 引言
 
-### 1. 写作逻辑：
+### 1. 写作逻辑
 
 1. 背景引入：核心问题（全球人口增长与粮食安全） → 相关政策 → 农业用地监测的重要性；
 2. 现有方法<u>分析</u>：现有像元基制图研究 → 现有对象基制图研究 → 农田制图的主要挑战；
@@ -39,7 +39,7 @@ categories:
 >
 > * **物候模式** | `phenological patterns`；
 
-### 2. 具体内容：
+### 2. 具体内容
 
 | 像素基制图研究                                               | 对象基制图研究⭐                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -47,17 +47,17 @@ categories:
 
 ## 材料与方法
 
-### 1. 研究区域：
+### 1. 研究区域
 
-| 属性         | 测试区域-TA1                       | 测试区域-TA2                                   | 测试区域-T**A3**                                        |
-| ------------ | ---------------------------------- | ---------------------------------------------- | ------------------------------------------------------- |
-| **主要作物** | 小麦、玉米、米、向日葵、森林、水体 | 双季作物、饲料作物、森林、玉米、水体、冬季作物 | 小麦、苜蓿、其他干草/非苜蓿、甜菜、洋葱、闲置耕地、蔬菜 |
-| **地理信息** | 罗马尼亚，温带大陆性气候           | 意大利，地中海气候                             | 加利福尼亚州南部，沙漠气候                              |
-| **像素范围** | $2738 \times 2333$                 | $1898 \times 1278$                             | $2336 \times 2521$                                      |
+| 属性                                                 | 测试区域-TA1                       | 测试区域-TA2                                   | 测试区域-T**A3**                                        |
+| ---------------------------------------------------- | ---------------------------------- | ---------------------------------------------- | ------------------------------------------------------- |
+| <span style='white-space:nowrap'>**主要作物**</span> | 小麦、玉米、米、向日葵、森林、水体 | 双季作物、饲料作物、森林、玉米、水体、冬季作物 | 小麦、苜蓿、其他干草/非苜蓿、甜菜、洋葱、闲置耕地、蔬菜 |
+| **地理信息**                                         | 罗马尼亚，温带大陆性气候           | 意大利，地中海气候                             | 加利福尼亚州南部，沙漠气候                              |
+| **像素范围**                                         | $2738 \times 2333$                 | $1898 \times 1278$                             | $2336 \times 2521$                                      |
 
 此外，论文还列出了测试区域的经纬度、ha范围、年平均温度、降水量、土壤等信息；
 
-### 2. 时序影像数据：
+### 2. 时序影像数据
 
 ![1-s2.0-S0034425717304686-gr2](https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/soppy-ie/1-s2.0-S0034425717304686-gr2-1744032841171.jpg)
 
@@ -65,7 +65,7 @@ categories:
 
 影像质量选择标准：云覆盖（$<10 %$）；
 
-### 3. 方法流程:
+### 3. 方法流程
 
 方法工作流程如下：
 
@@ -80,13 +80,13 @@ categories:
 
 <center>figure 3. 像素基和对象基的TWDTW和RF方法工作流程</center>
 
-### 4. 物候分析、对象分割与TWDTW：
+### 4. 物候分析、对象分割与TWDTW
 
-#### 4.1. 物候分析：
+#### 4.1. 物候分析
 
 本论文只采用了`NDVI`来获取作物的物候模式，因此对物候的分析较少；论文主要对三个测试区域中各作物类别的`NDVI`物候曲线进行分析；
 
-#### 4.2. 对象分割：
+#### 4.2. 对象分割
 
 论文中这两个方法均是使用的他人提供的工具与代码。论文中使用两小节介绍引用；
 
@@ -95,7 +95,7 @@ categories:
 * 时序对象分割使用是每张Sentinel-2影像的R、G、B、NIR波段；
 * 使用ESP2工具自动化生成MRS算法的参数\[[相关论文](https://www.sciencedirect.com/science/article/pii/S0924271613002803)\]\[[ESP2工具的使用](https://blog.csdn.net/weixin_43238426/article/details/108595989)\]；
 
-#### 4.3. TWDTW：
+#### 4.3. TWDTW
 
 [Maus等人（2016年）](https://scholar.google.com/scholar_lookup?title=A%20time-weighted%20dynamic%20time%20warping%20method%20for%20land-use%20and%20land-cover%20mapping&publication_year=2016&author=V.%20Maus&author=G.%20Camara&author=R.%20Cartaxo&author=A.%20Sanchez&author=F.M.%20Ramos&author=G.R.D.%20Queiroz)为DTW引入了时间约束，这个约束考虑到了土地覆盖类型的季节性，相较于传统DTW，该改进算法提高了分类准确率；并且Maus等人使用R语言实现了该算法，并发布了开源R包`dtwSat`；
 
@@ -105,11 +105,11 @@ categories:
 
 论文对如下实验板块进行了分析：1）计算资源分析；2）分割结果分析；3）**分类结果分析**；
 
-### 1.  其他分析：
+### 1.  其他分析
 
 其中，1）<u>计算资源分析</u>主要是对PBIA与OBIA在处理相同任务下的用时进行了简单分析；2）<u>分割结果分析</u>主要是对MRS分割结果进行**目视分析**；论文分析的重点还是对分类结果进行分析；
 
-### 2. 分类结果：
+### 2. 分类结果
 
 论文实验的OAs如下所示：
 

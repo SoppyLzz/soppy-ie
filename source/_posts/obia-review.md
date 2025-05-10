@@ -3,20 +3,20 @@ title: 综述阅读：深度学习遇见 OBIA：任务、挑战、策略与展�
 date: 2025-04-15 19:02:02
 tags:
   - OBIA
-  - review
+  - Review
 categories:
   - 遥感综述
 ---
 
 ## 综述信息
 
-| 属性       | 详细信息                                                     |
-| ---------- | ------------------------------------------------------------ |
-| **标题**   | 🔬 *[Deep Learning Meets OBIA: Tasks, Challenges, Strategies, and Perspectives](https://arxiv.org/abs/2408.01607)*<br>🔬 深度学习遇见 OBIA：任务、挑战、策略与展望 |
-| **期刊**   | 📚 *Arxiv*                                                    |
-| **日期**   | ⏲️ 2024-08                                                    |
-| **作者**   | 👩‍🔬 Lei Ma                                                    |
-| **关键词** | `Classification`、`segmentation`、`deep learning`、`object detection`、`change detection` |
+| 属性                                               | 详细信息                                                     |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| **标题**                                           | 🔬 *[Deep Learning Meets OBIA: Tasks, Challenges, Strategies, and Perspectives](https://arxiv.org/abs/2408.01607)*<br>🔬 深度学习遇见 OBIA：任务、挑战、策略与展望 |
+| **期刊**                                           | 📚 *Arxiv*                                                    |
+| **日期**                                           | ⏲️ 2024-08                                                    |
+| **作者**                                           | 👩‍🔬 Lei Ma                                                    |
+| <span style='white-space:nowrap'>**关键词**</span> | `Classification`、`segmentation`、`deep learning`、`object detection`、`change detection` |
 
 ## OBIA传统任务
 
@@ -26,7 +26,7 @@ categories:
 
 传统OBIA分割方法分为：
 
-#### 1.1. 基于边缘分割：
+#### 1.1. 基于边缘分割
 
 基于边缘的分割逻辑是识别并封闭（原文为：... identify and close edges ...）边缘来描绘对象，基于边缘分割的步骤是：1）边界检测；2）边缘闭合；
 
@@ -44,7 +44,7 @@ categories:
 | --------------------------------- | ---------- | -------- | ------------------------------------------------ |
 | **霍夫变换** \| `Hough transform` | N. Kiryati | 1991     | 提取几何形状；图像越复杂，所需霍夫空间维数越高； |
 
-#### 1.2. 基于区域分割：
+#### 1.2. 基于区域分割
 
 基于区域的分割算法是先确定区域，再检测边缘；基于区域的分割算法分为：<u>区域增长</u>、<u>区域分割</u>两种模式；
 
@@ -71,13 +71,13 @@ OBIA发展历史：
 
 3. 人们开始转向决策树 | `Decision tree` 、SVM、RF等机器学习方法；
 
-### 3. 时序分析🔥
+### 3. 时序分析⭐️
 
 **卫星图像时间序列** | `SITS` 已成为研究地球表面动态变化的无价资源，提供了跟踪陆地特征随时间变化的增强能力；
 
 SITS因为星载传感器的分辨率提高，有研究从PBIA转向OBIA，SITS分析方法有：1）相似度测量方法（DTW）；2）基于统计假设与模型的方法🤔；3）机器学习方法[略]；
 
-#### 3.1. 相似度测量：
+#### 3.1. 相似度测量
 
 这部分提到就是我之前看DTW+SITS相关论文，该领域的大多数研究都集中在DTW上，但He等人建议进一步探索其他方法，如基于<span style="color: steelblue">**形状距离**</span> | `SBD` 和 **全局对齐核** | `GAK` ，并且发现GAK测量通常比其他方法更适合<u>农业制图</u>。相关论文如下：
 
@@ -85,7 +85,7 @@ SITS因为星载传感器的分辨率提高，有研究从PBIA转向OBIA，SITS�
 | -------- | ------------------------------------------------------------ | --------------- |
 | **96**   | 🔬 *Evaluation of advanced time series  similarity measures for object-based cropland mapping* | W. He, **2023** |
 
-#### 3.2. 基于统计假设与模型：
+#### 3.2. 基于统计假设与模型
 
 > 基于统计假设、模型的方法通常旨在通过<u>**建模**</u>密集时间序列来实现<u>变化检测</u>，这有效地缓解了噪声和光照变化等问题；
 
