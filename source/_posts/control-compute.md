@@ -4,6 +4,8 @@ date: 2024-10-14 18:45:50
 tags:
   - python
   - tutorial
+categories:
+  - 笔记
 ---
 
 ## 运算
