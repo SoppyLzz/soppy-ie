@@ -301,7 +301,7 @@ Python的异常都是从`BaseException`派生而来，`BaseException`的派生�
 
 Python的异常控制主要由两个板块构成：<u>处理异常</u>、<u>抛出异常</u>。
 
-#### 3.1. 异常处理
+#### 🛠️ 异常处理
 
 > `try-except`是Python异常处理的常用模板，此外`with`语句也与异常处理有关。
 
@@ -336,7 +336,7 @@ with ManagedResource() as resource:
     raise ValueError("Oops!")
 ```
 
-#### 3.2. 抛出异常
+#### ⚠️ 抛出异常
 
 Python的`raise`语句类似于其他语言中的`throw`语句，用于抛出新建的异常。
 
@@ -405,7 +405,7 @@ except Exception as err:
 
 * **引用变量**：当我们引用一个变量时，Python会按照由局部命名空间到内置命名空间的顺序搜索相应变量；
 
-* **管理变量**：当我们在内部作用域想要**<u>修改、删除、声明</u>**外部作用域的变量时，需要使用`global`、`nonlocal`关键字声明对应变量；
+* **管理变量**：当我们在内部作用域想要<u>**修改、删除、声明**</u>外部作用域的变量时，需要使用`global`、`nonlocal`关键字声明对应变量；
 
     需要注意的是，在多层函数嵌套中`global`用于引用当前模块的<span style='color:steelblue'>全局作用域</span>对应命名空间中的变量，`nonlocal`用于引用上一级<span style='color:steelblue'>函数作用域</span>对应命名空间中的变量。
 
@@ -840,126 +840,125 @@ print(rt_data)
 
 Python的标准库为我们提供了一些内置方法，想要了解Python的内置方法有哪些可以查询Python文档：[内置函数 — Python 3.13.0 文档](https://docs.python.org/zh-cn/3/library/functions.html)。在这里我们只列出一部分常用的Python内置方法。
 
-* **用于可迭代序列**
+#### 🔁 用于可迭代序列
 
-    * **`all(iterable)`**：如果 *iterable* 的所有元素均为真值（或可迭代对象为空）则返回`True`。 等价于：
+* **`all(iterable)`**：如果 *iterable* 的所有元素均为真值（或可迭代对象为空）则返回`True`。 等价于：
 
-        ```python
-        def all(iterable):
-            for element in iterable:
-                if not element:
-                    return False
-            return True
-        ```
+    ```python
+    def all(iterable):
+        for element in iterable:
+            if not element:
+                return False
+        return True
+    ```
 
-    * **`any(iterable)`**：如果 *iterable* 的任一元素为真值则返回`True`。 如果可迭代对象为空，返回`False`。 等价于：
+* **`any(iterable)`**：如果 *iterable* 的任一元素为真值则返回`True`。 如果可迭代对象为空，返回`False`。 等价于：
 
-        ```python
-        def any(iterable):
-            for element in iterable:
-                if element:
-                    return True
-            return False
-        ```
+    ```python
+    def any(iterable):
+        for element in iterable:
+            if element:
+                return True
+        return False
+    ```
 
-    * **`zip(*iterables, strict=False)`**：该方法返回元组的迭代器，其中第 *i* 个元组包含的是每个参数迭代器的第 *i* 个元素。默认情况下，`zip()`会在最短的参数迭代器迭代完成后停止（<span style='color:crimson'>`Python 3.10` 后引入 `strict` 。当 `strict` 为 `True` 时，`zip()` 会检查 *iterable* 是否长度相等。</span>）：
+* **`zip(*iterables, strict=False)`**：该方法返回元组的迭代器，其中第 *i* 个元组包含的是每个参数迭代器的第 *i* 个元素。默认情况下，`zip()`会在最短的参数迭代器迭代完成后停止（<span style='color:crimson'>`Python 3.10` 后引入 `strict` 。当 `strict` 为 `True` 时，`zip()` 会检查 *iterable* 是否长度相等。</span>）：
 
-        ```python
-        l1=[1,2,3]
-        t1=(1,2,3,4,5)
-        z1=zip(l1, t1)
-        
-        print(z1)
-        for item in z1:
-            print(item)
-        
-        # # Result:
-        # # <zip object at 0x000001E0AA6EE900>
-        # # (1, 1)
-        # # (2, 2)
-        # # (3, 3)
-        ```
-
-    * **`enumerate(iter, start=0)`**：返回一个枚举对象。我们可以通过设置`start`参数来控制<u>计数器开始值</u>：
-
-        ```python
-        l1=['a', 'b', 'c', 'd']
-        enum=enumerate(l1)
-        
-        print(enum)
-        for item in enum:
-            print(item)
-        
-        # # Result: 
-        # # <enumerate object at 0x0000013B7D0CE7C0>
-        # # (0, 'a')
-        # # (1, 'b')
-        # # (2, 'c')
-        # # (3, 'd')
-        ```
-
-
-* **用于实例对象**
-
-    * **`callable(obj)`**：判断 *obj* 是否为可调用类型实例（ <span style='color:crimson'>该方法在 `Python 3.0` 时被移除，然后在 `Python 3.2` 时被重新加入。</span>）；
-    * <span style='color:steelblue'>**`dir(obj)`**</span>：如果没有实参，则返回当前本地作用域中的名称列表。如果有实参，它会尝试返回该对象的<span style='color:steelblue'>有效属性列表</span>；
-
-        ```python
-        print(dir())
-        
-        # # Result: 
-        # # [
-        # #     '__annotations__', 
-        # #    '__builtins__', 
-        # #    '__cached__', 
-        # #    '__doc__', 
-        # #     '__file__', 
-        # #     '__loader__', 
-        # #     '__name__', 
-        # #     '__package__', 
-        # #     '__spec__'
-        # # ]
-        ```
-
-    * **`hasatter()`**：判断对象是否有对应属性。此方法是调用`getattr(object, name)`看是否有`AttributeError`异常来实现的；
-
-    * **`getattr(object, name)`**
-        **`getattr(object, name, default)`**：获取对象的属性值。如果在调用时提供了`default`且没有该属性则返回`default`，如果在调用时没有提供`default`且没有该属性则会引起 `AttributeError`的异常；
-
-    * **`setattr(object, name, value)`**：设置对象对应属性值；
-
-    * **`delattr(obj, name)`**：删除对象的属性值。如果对象没有该属性则会引起`AttributeError`的异常；
-
-* **用于执行与测试**
-
-    我们在这里只简单介绍一下以下方法。关于 `breakpoint()` 、*globals* 、*locals* 等细节请参考Python文档。
-
-    | 函数                                                         | 说明                                                         |
-    | ------------------------------------------------------------ | ------------------------------------------------------------ |
-    | **`breakpoint(*args, **kwargs)`**                            | 我们可以在代码中使用`breakpoint()`暂停程序                   |
-    | **`eval(source, /, globals=None, locals=None)`**             | 该方法用于将字符串作为<u>Python 表达式</u>来执行，并返回表达式的值； |
-    | **`exec(source, /, globals=None, locals=None, *, closure=None)`** | 该方法用于执行存储在字符串或对象中的<u>Python 代码</u>；     |
-
-* **用于对象标识符**
+    ```python
+    l1=[1,2,3]
+    t1=(1,2,3,4,5)
+    z1=zip(l1, t1)
     
-    | 函数            | 说明                                                         |
-    | --------------- | ------------------------------------------------------------ |
-    | **`id(obj)`**   | 返回对象的“标识值”。该值是一个整数，在此对象的生命周期中保证是唯一且恒定的。两个生命期不重叠的对象可能具有相同的`id()`值 |
-    | **`hash(obj)`** | 返回该对象的哈希值。对于具有自定义`__hash__()`方法的对象，请注意`hash()`会根据宿主机的字长来截断返回值 |
+    print(z1)
+    for item in z1:
+        print(item)
     
-* **用于类型检查**
+    # # Result:
+    # # <zip object at 0x000001E0AA6EE900>
+    # # (1, 1)
+    # # (2, 2)
+    # # (3, 3)
+    ```
 
-    | 函数                               | 说明                                                         |
-    | ---------------------------------- | ------------------------------------------------------------ |
-    | **`isinstance(obj, classinfo)`**   | 当前检查对象不是给定类型的，则函数总是返回`False`。当 *obj* 是 *classinfo* 的实例，则返回`True` |
-    | **`issubclass(class, classinfo)`** | 如果 *class* 是 *classinfo* 的子类（直接、间接或抽象基类的子类），则返回`True` |
+* **`enumerate(iter, start=0)`**：返回一个枚举对象。我们可以通过设置`start`参数来控制<u>计数器开始值</u>：
 
-    关于上述两种方法的 *classinfo* 参数可以为一个类、多个类的元组。从`Python 3.10`开始，可以是一个`union`类型。
+    ```python
+    l1=['a', 'b', 'c', 'd']
+    enum=enumerate(l1)
+    
+    print(enum)
+    for item in enum:
+        print(item)
+    
+    # # Result: 
+    # # <enumerate object at 0x0000013B7D0CE7C0>
+    # # (0, 'a')
+    # # (1, 'b')
+    # # (2, 'c')
+    # # (3, 'd')
+    ```
 
-* **`help()`**
+#### 🧱用于实例对象
 
-    调用`help()`启动内置的帮助系统，此函数主要在<u>交互式</u>中使用。
+* **`callable(obj)`**：判断 *obj* 是否为可调用类型实例（<span style='color:crimson'>该方法在 `Python 3.0` 时被移除，然后在 `Python 3.2` 时被重新加入。</span>）；
+* <span style='color:steelblue'>**`dir(obj)`**</span>：如果没有实参，则返回当前本地作用域中的名称列表。如果有实参，它会尝试返回该对象的<span style='color:steelblue'>有效属性列表</span>；
 
-    1. 如果没有实参，解释器控制台里会启动交互式帮助系统。
-    2. 如果实参是一个字符串，则在模块、函数、类、方法、关键字或文档主题中搜索该字符串，并在控制台上打印帮助信息。
-    3. 如果实参是其他任意对象，则会生成该对象的帮助页。
+    ```python
+    print(dir())
+    
+    # # Result: 
+    # # [
+    # #     '__annotations__', 
+    # #    '__builtins__', 
+    # #    '__cached__', 
+    # #    '__doc__', 
+    # #     '__file__', 
+    # #     '__loader__', 
+    # #     '__name__', 
+    # #     '__package__', 
+    # #     '__spec__'
+    # # ]
+    ```
+
+* **`hasatter()`**：判断对象是否有对应属性。此方法是调用`getattr(object, name)`看是否有`AttributeError`异常来实现的；
+
+* **`getattr(object, name)`**
+    **`getattr(object, name, default)`**：获取对象的属性值。如果在调用时提供了`default`且没有该属性则返回`default`，如果在调用时没有提供`default`且没有该属性则会引起 `AttributeError`的异常；
+
+* **`setattr(object, name, value)`**：设置对象对应属性值；
+
+* **`delattr(obj, name)`**：删除对象的属性值。如果对象没有该属性则会引起`AttributeError`的异常；
+
+#### 🧪用于执行与测试
+
+我们在这里只简单介绍一下以下方法。关于 `breakpoint()` 、*globals* 、*locals* 等细节请参考Python文档。
+
+| 函数                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **`breakpoint(*args, **kwargs)`**                            | 我们可以在代码中使用`breakpoint()`暂停程序                   |
+| **`eval(source, /, globals=None, locals=None)`**             | 该方法用于将字符串作为<u>Python 表达式</u>来执行，并返回表达式的值； |
+| **`exec(source, /, globals=None, locals=None, *, closure=None)`** | 该方法用于执行存储在字符串或对象中的<u>Python 代码</u>；     |
+
+#### 🆔 用于对象标识符
+
+| 函数            | 说明                                                         |
+| --------------- | ------------------------------------------------------------ |
+| **`id(obj)`**   | 返回对象的“标识值”。该值是一个整数，在此对象的生命周期中保证是唯一且恒定的。两个生命期不重叠的对象可能具有相同的`id()`值 |
+| **`hash(obj)`** | 返回该对象的哈希值。对于具有自定义`__hash__()`方法的对象，请注意`hash()`会根据宿主机的字长来截断返回值 |
+
+#### 🔍 用于类型检查
+
+| 函数                               | 说明                                                         |
+| ---------------------------------- | ------------------------------------------------------------ |
+| **`isinstance(obj, classinfo)`**   | 当前检查对象不是给定类型的，则函数总是返回`False`。当 *obj* 是 *classinfo* 的实例，则返回`True` |
+| **`issubclass(class, classinfo)`** | 如果 *class* 是 *classinfo* 的子类（直接、间接或抽象基类的子类），则返回`True` |
+
+关于上述两种方法的 *classinfo* 参数可以为一个类、多个类的元组。从`Python 3.10`开始，可以是一个`union`类型。
+
+#### 💡 用于帮助
+
+调用`help()`启动内置的帮助系统，此函数主要在<u>交互式</u>中使用。
+
+1. 如果没有实参，解释器控制台里会启动交互式帮助系统。
+2. 如果实参是一个字符串，则在模块、函数、类、方法、关键字或文档主题中搜索该字符串，并在控制台上打印帮助信息。
+3. 如果实参是其他任意对象，则会生成该对象的帮助页。
