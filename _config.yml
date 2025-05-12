@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: SoppyLzz的小屋
+title: Soppy的小屋
 subtitle: ''
 description: '欢迎来到我的博客! avatar与favicon是调用的gravatar的API，显示不出来是网络的问题！'
 keywords:
@@ -106,6 +106,7 @@ theme: cactus
 #  branch: main
 
 theme_config:
+  projects_url: http://github.com/SoppyLzz
   social_links:
     - icon: github
       label: "SoppyLzz"
