@@ -343,8 +343,6 @@ conda clean --f
 conda clean --force-pkgs-dirs
 ```
 
----
-
 ## 管理环境
 
 ### 1. 查询环境
@@ -541,5 +539,3 @@ conda uninstall [package_name] --force-remove
 ```shell
 conda update [package_name] --name [env_name]
 ```
-
----

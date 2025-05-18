@@ -106,11 +106,11 @@ theme: cactus
 #  branch: main
 
 theme_config:
-  projects_url: http://github.com/SoppyLzz
+  projects_url: http://github.com/soppylzz
   social_links:
     - icon: github
       label: "SoppyLzz"
-      link: "https://github.com/SoppyLzz"
+      link: "https://github.com/soppylzz"
     - icon: qq
       label: "1575562010"
       link: "https://im.qq.com/"
@@ -136,7 +136,7 @@ theme_config:
 
   utterances:
     enabled: true
-    repo: SoppyLzz/soppy-ie
+    repo: soppylzz/soppy-ie
     issue_term: pathname
     label: utteranc
     theme: boxy-light
